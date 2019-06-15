@@ -14,5 +14,10 @@ Run Instructions:
 3. Open solution with Visual Studio then build and run.
 4. Do the following if you don't have Visual Studio installed
 5. Open PowerShell/Terminal then go to the file location
-6. Run "dotnet restore"
-7. Run "dotnet run"
+6. Run "dotnet restore" where Bookcar_demo.sln locates
+7. Run "dotnet run" where Bookcar_demo.csproj locates
+
+Web API:
+1. List all cars: http://localhost:xxxx/api/cars
+2. List available cars: http://localhost:xxxx/api/cars/available
+3. Book a car: send POST requests to http://localhost:xxxx/api/bookings with JSON { userId: 1, CarRego: "xxxxxx" }
