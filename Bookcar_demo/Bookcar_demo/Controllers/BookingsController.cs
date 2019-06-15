@@ -44,7 +44,7 @@ namespace Bookcar_demo.Controllers
             int borrowExpInHours = Convert.ToInt32(_configuration["Settings:BorrowExpInHours"]);
 
            
-            if (_borrowRecordRepostitory.CheckCarAvailability(borrowRecordDto.CarRego, borrowExpInHours))
+            if (!_borrowRecordRepostitory.CheckCarAvailability(borrowRecordDto.CarRego, borrowExpInHours))
             {
                 return BadRequest("The car is not available.");
             }
@@ -54,6 +54,7 @@ namespace Bookcar_demo.Controllers
                 CarRego = borrowRecordDto.CarRego,
                 UserId = borrowRecordDto.UserId,
                 CreateDate = DateTime.Now,
+                IsActive = true,
             };
 
             try
@@ -68,7 +69,7 @@ namespace Bookcar_demo.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
 
-            return CreatedAtRoute(Request.Path.Value + newRecord.BorrowRecordId, newRecord);
+            return Ok(newRecord);
 
         }
 

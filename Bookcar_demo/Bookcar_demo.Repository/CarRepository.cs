@@ -22,7 +22,7 @@ namespace Bookcar_demo.Repository
 
         public IEnumerable<Car> GetAvailableCars(int borrowExpInHours)
         {
-            return AppDbContext.Cars.Where(c => c.IsActive == true && AppDbContext.BorrowRecords.Any(r => r.IsActive == true && r.CarRego.Equals(c.Rego) && r.CreateDate > DateTime.Now.AddHours(-borrowExpInHours))).ToList();
+            return AppDbContext.Cars.Where(c => c.IsActive == true && !AppDbContext.BorrowRecords.Any(r => r.IsActive == true && r.CarRego.Equals(c.Rego) && r.CreateDate > DateTime.Now.AddHours(-borrowExpInHours))).ToList();
         }
     }
 }
