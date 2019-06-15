@@ -4,14 +4,16 @@ using Bookcar_demo.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bookcar_demo.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190615032726_correctCarModelForeignKey")]
+    partial class correctCarModelForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,9 +134,6 @@ namespace Bookcar_demo.Repository.Migrations
                         .HasColumnType("char(64)");
 
                     b.Property<Guid>("Salt");
-
-                    b.Property<string>("Username")
-                        .HasMaxLength(255);
 
                     b.HasKey("UserId");
 

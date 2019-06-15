@@ -20,7 +20,7 @@ namespace Bookcar_demo.Core
         [MaxLength(255)]
         public string ModelName { get; set; }
 
-        public int CarMakeId { get; set; }
+        public int MakeId { get; set; }
 
         //Navigation Properties
         public ICollection<Car> Cars { get; set; }

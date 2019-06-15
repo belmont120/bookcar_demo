@@ -15,7 +15,7 @@ namespace Bookcar_demo.Core
 
         public byte Seats { get; set; }
 
-        public int ModelId { get; set; }
+        public int CarModelId { get; set; }
 
         public ICollection<BorrowRecord> BorrowRecords { get; set; }
     }

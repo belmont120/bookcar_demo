@@ -18,6 +18,8 @@ namespace Bookcar_demo.Core
         [Key]
         public int UserId { get; set; }
         [MaxLength(255)]
+        public string Username { get; set; }
+        [MaxLength(255)]
         public string Firstname { get; set; }
         [MaxLength(255)]
         public string LastName { get; set; }

@@ -4,14 +4,16 @@ using Bookcar_demo.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bookcar_demo.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190615032311_correctMakeForeignKey")]
+    partial class correctMakeForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,11 +50,13 @@ namespace Bookcar_demo.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(20);
 
-                    b.Property<int>("CarModelId");
+                    b.Property<int?>("CarModelId");
 
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<bool>("IsActive");
+
+                    b.Property<int>("ModelId");
 
                     b.Property<byte>("Seats");
 
@@ -133,9 +137,6 @@ namespace Bookcar_demo.Repository.Migrations
 
                     b.Property<Guid>("Salt");
 
-                    b.Property<string>("Username")
-                        .HasMaxLength(255);
-
                     b.HasKey("UserId");
 
                     b.ToTable("User");
@@ -170,8 +171,7 @@ namespace Bookcar_demo.Repository.Migrations
                 {
                     b.HasOne("Bookcar_demo.Core.CarModel")
                         .WithMany("Cars")
-                        .HasForeignKey("CarModelId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CarModelId");
                 });
 
             modelBuilder.Entity("Bookcar_demo.Core.CarModel", b =>
