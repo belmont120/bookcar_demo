@@ -21,3 +21,15 @@ Web API:
 1. List all cars: http://localhost:xxxx/api/cars
 2. List available cars: http://localhost:xxxx/api/cars/available
 3. Book a car: send POST requests to http://localhost:xxxx/api/bookings with JSON { userId: 1, CarRego: "xxxxxx" }
+
+TODO List:
+1. Token-based Authentication & Role-based Authorisation
+2. Unit Tests
+3. Move ConnectionString to Environment Variable
+4. Setup AutoMapper
+5. User creation by Admin
+6. Add Cars, Models, Makes by Admin
+7. Cancel bookings by User
+8. Extend borrowing request by User then approval by Admin
+9. Full implementation of DTO
+10. More Web API end points
